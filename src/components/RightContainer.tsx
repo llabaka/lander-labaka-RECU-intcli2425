@@ -1,6 +1,5 @@
 interface RightContainerInterface {
     showVillagers: () => void;
-    showingWorkers: {}
 }
 
 const RightContainer: React.FC<RightContainerInterface> = ({ showVillagers }) => {
@@ -13,6 +12,10 @@ const RightContainer: React.FC<RightContainerInterface> = ({ showVillagers }) =>
             >
                 SHOW VILLAGER PROFFESION AND WORKERS
             </button>
+
+            <div className="flex flex-col h-[20%] w-full border-1">
+
+            </div>
         </div>
     );
 };

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import LeftContainer from './components/LeftContainer';
-import { Towers } from './types/MegaEpicFortress';
+import { Towers, VillagerProfessionCount } from './types/MegaEpicFortress';
 import { countVillagersByProfession, getTowersAndGuardsByWeaponType } from './helpers/helpers';
 import { megaEpicFortress } from './data/data';
 import RightContainer from './components/RightContainer';
@@ -9,22 +9,23 @@ import RightContainer from './components/RightContainer';
 function App() {
 
   const [showingTower, setShowingTower] = useState<Towers[]>([]);
-  const [showingWorkers, setShowingWorkers] = useState({})
+  const [showingWorkers, setShowingWorkers] = useState<VillagerProfessionCount>();
   const [weaponName, setWeaponName] = useState('');
 
   useEffect(() => {
     filterTower();
-    console.log(showingTower);
     
   }, [showingTower])
 
   const filterTower = async () => {
     let filteredTower = showingTower;
-
+    
     if (weaponName) {
       filteredTower = getTowersAndGuardsByWeaponType(megaEpicFortress, weaponName)
+      console.log(filteredTower);
+      setShowingTower(filteredTower)
     }
-    setShowingTower(filteredTower)
+
   }
 
   const showVillagers = () => {
@@ -50,7 +51,6 @@ function App() {
 
         <RightContainer
           showVillagers={showVillagers}
-          showingWorkers={showingWorkers}
         />
       </div>
     </>
