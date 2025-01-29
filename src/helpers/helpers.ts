@@ -12,7 +12,7 @@ export function getTowersAndGuardsByWeaponType(fortress: MegaEpicFortress, weapo
 //Recibe la fortaleza, y devuelve tipo Record
 export const countVillagersByProfession = (fortress: MegaEpicFortress): VillagerProfessionCount => {
     const villagers = fortress.inhabitants.roles.find(role => role.role === "Villager");
-    
+
     if (!villagers || !villagers.professions) {
         return {};
     }
@@ -22,6 +22,6 @@ export const countVillagersByProfession = (fortress: MegaEpicFortress): Villager
     for (const profession of villagers.professions) {
         professionCounts[profession.type] = profession.count;
     }
-    
+
     return professionCounts;
 };
