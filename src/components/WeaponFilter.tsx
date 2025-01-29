@@ -9,8 +9,7 @@ interface WeaponFilterInterface {
 const WeaponFilter: React.FC<WeaponFilterInterface> = ({ weaponName, setWeaponName, fortress }) => {
 
     const weaponTypes = fortress.defenses.towers.map(tower => tower.armament.weaponType);
-    console.log(weaponTypes);
-    
+
     return (
         <div className="mt-5">
             <select

@@ -2,18 +2,18 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import LeftContainer from './components/LeftContainer';
 import { Towers } from './types/MegaEpicFortress';
-import { getTowersAndGuardsByWeaponType } from './helpers/helpers';
+import { countVillagersByProfession, getTowersAndGuardsByWeaponType } from './helpers/helpers';
 import { megaEpicFortress } from './data/data';
+import RightContainer from './components/RightContainer';
 
 function App() {
 
   const [showingTower, setShowingTower] = useState<Towers[]>([]);
+  const [showingWorkers, setShowingWorkers] = useState({})
   const [weaponName, setWeaponName] = useState('');
 
   useEffect(() => {
     filterTower();
-    console.log("SHOWING TOWER");
-    
     console.log(showingTower);
     
   }, [weaponName])
@@ -23,19 +23,28 @@ function App() {
 
     if (weaponName) {
       filteredTower = getTowersAndGuardsByWeaponType(megaEpicFortress, weaponName)
-      setShowingTower(showingTower)
     }
-
+    setShowingTower(filteredTower)
   }
+
+  const showVillagers = () => {
+    const villagers = countVillagersByProfession(megaEpicFortress);
+    setShowingWorkers(villagers);
+  };
+
   return (
     <>
-      <div className='flex flex-col h-screen w-screen justify-self-start'>
+      <div className='flex flex-start h-screen w-screen justify-self-start'>
 
         <LeftContainer
-        weaponName={weaponName}
-        setWeaponName={setWeaponName}
-        showingTower={showingTower}
-        fortress={megaEpicFortress}
+          weaponName={weaponName}
+          setWeaponName={setWeaponName}
+          showingTower={showingTower}
+          fortress={megaEpicFortress}
+        />
+
+        <RightContainer
+          showVillagers={showVillagers}
         />
       </div>
     </>
