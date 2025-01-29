@@ -24,12 +24,17 @@ const LeftContainer: React.FC<LeftContainerInterface> = ({ weaponName, setWeapon
       />
 
       <div>
-        <p className='mt-2 text-2xl'>{showingTower.towers.map(tower => tower.name)}</p>
-        <ul>
-          {showingTower.guardNames.map((guardName, index) => (
-            <li key={index}>{guardName}</li>
-          ))}
-        </ul>
+        {showingTower.towers.map((tower, index) => (
+          <div key={index}>
+            <p className='text-2xl bold'>{tower.name}</p>
+
+            {showingTower.guardNames.map((guard, index) => (
+              <ul key={index}>
+                <li>{guard}</li>
+              </ul>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   );

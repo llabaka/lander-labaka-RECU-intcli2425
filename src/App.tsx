@@ -24,7 +24,6 @@ function App() {
       console.log(filteredTower);
       setShowingTower(filteredTower)
     }
-
   }
 
   const showVillagers = () => {
