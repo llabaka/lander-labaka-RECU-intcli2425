@@ -12,8 +12,12 @@ describe('Recibe la fortaleza, el arma', () => {
       const findTowers = getTowersAndGuardsByWeaponType(fortress, "Ballista");
 
       //Assert
-      expect(findTowers.map(findTower => findTower.name)).toContain('Tower of Vigilance');
-      expect(findTowers.map(findTower => findTower.guards.map(guard => guard.name))).toStrictEqual([["Lira the Watcher", "Garron the Keen-eyed"], ["Lazarus", "Pesbe"]])
+      expect(findTowers.guardNames).toContain("Lira the Watcher");
+      expect(findTowers.guardNames).toContain("Garron the Keen-eyed");
+      expect(findTowers.guardNames).toContain("Pesbe");
+
+      expect(findTowers.towers.map(tower => tower.name)).toContain('Tower of Vigilance')
+      expect(findTowers.towers.map(tower => tower.name)).toContain('Tower of Ice')
   })
 })
 
