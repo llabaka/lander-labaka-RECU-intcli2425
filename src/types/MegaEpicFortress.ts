@@ -132,3 +132,5 @@ export interface MajorEvents {
     event: string,
     outcome: string
 }
+
+export type VillagerProfessionCount = Record<string, number>;
