@@ -25,11 +25,8 @@ describe('Recibe la fortaleza. Devuelve las profesionales y la cantidad de profe
 
       //Act
       const record = countVillagersByProfession(fortress);
-      console.log("RECORD");
-      console.log(record);
-      
+
       //Assert
-      // expect(findTowers.map(findTower => findTower.name)).toContain('Tower of Vigilance');
-      // expect(findTowers.map(findTower => findTower.guards.map(guard => guard.name))).toStrictEqual([["Lira the Watcher", "Garron the Keen-eyed"], ["Lazarus", "Pesbe"]])
+      expect(record).toStrictEqual({"Acolyte": 237, "Beggar": 97, "Blacksmith": 31, "Farmer": 467, "Healer": 129, "Merchant": 63})  
   })
 })
