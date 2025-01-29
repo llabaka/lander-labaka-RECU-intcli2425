@@ -1,4 +1,6 @@
-export const megaEpicFortress = {
+import { MegaEpicFortress } from "../types/MegaEpicFortress";
+
+export const megaEpicFortress: MegaEpicFortress = {
   name: "Citadel of Eternal Night",
   location: {
     continent: "Vernalis",
@@ -196,6 +198,8 @@ export const megaEpicFortress = {
           armor: "Steel Plate",
           shield: "Tower Shield",
         },
+        professions: [
+        ]
       },
       {
         role: "Mage",
@@ -205,10 +209,17 @@ export const megaEpicFortress = {
           robe: "Enchanted Robes",
           amulet: "Amulet of Wisdom",
         },
+        professions: [
+        ]
       },
       {
         role: "Villager",
         count: 600,
+        equipment: {
+          weapon: "Longsword",
+          armor: "Steel Plate",
+          shield: "Tower Shield",
+        },
         professions: [
           {
             type: "Farmer",
