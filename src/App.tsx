@@ -16,7 +16,7 @@ function App() {
     filterTower();
     console.log(showingTower);
     
-  }, [weaponName])
+  }, [showingTower])
 
   const filterTower = async () => {
     let filteredTower = showingTower;
@@ -32,6 +32,11 @@ function App() {
     setShowingWorkers(villagers);
   };
 
+  useEffect(() => {
+    console.log(showingWorkers);
+    
+  },[showingWorkers])
+
   return (
     <>
       <div className='flex flex-start h-screen w-screen justify-self-start'>
@@ -45,6 +50,7 @@ function App() {
 
         <RightContainer
           showVillagers={showVillagers}
+          showingWorkers={showingWorkers}
         />
       </div>
     </>
