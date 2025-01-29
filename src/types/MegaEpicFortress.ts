@@ -7,7 +7,7 @@ export interface MegaEpicFortress {
     history: History
 }
 
-interface Location {
+export interface Location {
     continent: string,
     coordinates: {
         latitude: number,
@@ -16,82 +16,82 @@ interface Location {
     nearbyLandmarks: NearbyLandMarks[]
 }
 
-interface NearbyLandMarks {
+export interface NearbyLandMarks {
     name: string,
     type: string,
     distance: number
 }
 
-interface Defenses {
+export interface Defenses {
     walls: Walls,
     towers: Towers[]
 }
 
-interface Walls {
+export interface Walls {
     material: string,
     height: number,
     enchantments: Enchantments[]
 }
 
-interface Enchantments {
+export interface Enchantments {
     name: string,
     level: number
 }
 
-interface Towers {
+export interface Towers {
     name: string,
     height: number,
     armament: Armament,
     guards: Guards[]
 }
 
-interface Armament {
+export interface Armament {
     weaponType: string,
     ammunitionType: string,
     ammunitionCount: number
 }
 
-interface Guards {
+export interface Guards {
     name: string,
     rank: string
 }
 
-interface Inhabitants {
+export interface Inhabitants {
     population: number,
     roles: Roles[]
 }
 
-interface Roles {
+export interface Roles {
     role: string,
     count: number,
     equipment: SoldierRole | MageRole
     professions: Proffesions[]
 }
 
-interface SoldierRole {
+export interface SoldierRole {
     weapon: string,
     armor: string,
     shield: string
 
 }
 
-interface MageRole {
+export interface MageRole {
     staff: string,
     robe: string,
     amulet: string
 }
 
-interface Proffesions {
+export interface Proffesions {
     type: string,
     count: number
 }
 
-interface Resources {
+export interface Resources {
     storage: Storage
     armory: Armory
 }
 
-interface Storage {
+export interface Storage {
     food: {
         type: string,
         quantity: number,
@@ -104,22 +104,22 @@ interface Storage {
     }
 }
 
-interface Armory {
+export interface Armory {
     weapons: Weapons[],
     shields: Shields[]
 }
 
-interface Weapons {
+export interface Weapons {
     type: string,
     quantity: number
 }
 
-interface Shields {
+export interface Shields {
     type: string,
     quantity: number
 }
 
-interface History {
+export interface History {
     founded: {
         year: number,
         by: string
@@ -127,7 +127,7 @@ interface History {
     majorEvents: MajorEvents[]
 }
 
-interface MajorEvents {
+export interface MajorEvents {
     year: number,
     event: string,
     outcome: string
