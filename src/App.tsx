@@ -18,11 +18,13 @@ function App() {
 
   const filterTower = async () => {
     let filteredTower = showingTower;
-    
+
     if (weaponName) {
       filteredTower = getTowersAndGuardsByWeaponType(megaEpicFortress, weaponName)
       console.log(filteredTower);
       setShowingTower(filteredTower)
+    } else {
+      setShowingTower({ towers: [], guardNames: [] });
     }
   }
 
@@ -33,8 +35,8 @@ function App() {
 
   useEffect(() => {
     console.log(showingWorkers);
-    
-  },[showingWorkers])
+
+  }, [showingWorkers])
 
   return (
     <>
