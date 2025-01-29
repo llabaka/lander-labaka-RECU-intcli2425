@@ -8,14 +8,13 @@ import RightContainer from './components/RightContainer';
 
 function App() {
 
-  const [showingTower, setShowingTower] = useState<Towers[]>([]);
+  const [showingTower, setShowingTower] = useState<{ towers: Towers[], guardNames: string[] }>({ towers: [], guardNames: [] });
   const [showingWorkers, setShowingWorkers] = useState<VillagerProfessionCount>();
   const [weaponName, setWeaponName] = useState('');
 
   useEffect(() => {
     filterTower();
-    
-  }, [showingTower])
+  }, [weaponName])
 
   const filterTower = async () => {
     let filteredTower = showingTower;

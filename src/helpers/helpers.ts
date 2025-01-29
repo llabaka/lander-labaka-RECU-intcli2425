@@ -1,10 +1,12 @@
 import { MegaEpicFortress, Towers, VillagerProfessionCount } from "../types/MegaEpicFortress";
 
 //Recibe la fortaleza, el arma, y devuelve un array de objetos torre con su nombre y devuelve un array de los nombres de los guardianes
-export function getTowersAndGuardsByWeaponType(fortress: MegaEpicFortress, weapon: string): Towers[] {
+export function getTowersAndGuardsByWeaponType(fortress: MegaEpicFortress, weapon: string): { towers: Towers[], guardNames: string[] } {
+    const towers = fortress.defenses.towers.filter(tower => tower.armament.weaponType === weapon);
 
-    let towerWeaponCoincides = fortress.defenses.towers.filter(tower => tower.armament.weaponType === weapon && tower.guards.filter(guard => guard.name));
-    return towerWeaponCoincides;
+    const guardNames = towers.flatMap(tower => tower.guards.map(guard => guard.name));
+
+    return { towers, guardNames };
 }
 
 //Recibe la fortaleza, y devuelve tipo Record

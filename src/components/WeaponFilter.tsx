@@ -21,7 +21,7 @@ const WeaponFilter: React.FC<WeaponFilterInterface> = ({ weaponName, setWeaponNa
                 <option value="Ballista" className="text-yellow-400">{weaponTypes[0]}</option>
                 <option value="Arcane Cannon" className="text-orange-400">{weaponTypes[1]}</option>
                 <option value="Elemental Bow" className="text-purple-400">{weaponTypes[4]}</option>
-                <option value="Banana" className="text-purple-400">{weaponTypes[5]}</option>
+                <option value="Banana Launcher" className="text-purple-400">{weaponTypes[5]}</option>
             </select>
         </div>
     );
