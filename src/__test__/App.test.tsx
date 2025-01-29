@@ -9,11 +9,10 @@ describe('Recibe la fortaleza, el arma', () => {
       const fortress = megaEpicFortress;
 
       //Act
-      const findTower = getTowersAndGuardsByWeaponType(fortress, "Ballista");
-
-      console.log(findTower)
+      const findTowers = getTowersAndGuardsByWeaponType(fortress, "Ballista");
 
       //Assert
-      expect(findTower.map(findTower => findTower.name)).toContain('Tower of Vigilance');
+      expect(findTowers.map(findTower => findTower.name)).toContain('Tower of Vigilance');
+      expect(findTowers.map(findTower => findTower.guards.map(guard => guard.name))).toStrictEqual([["Lira the Watcher", "Garron the Keen-eyed"], ["Lazarus", "Pesbe"]])
   })
 })
