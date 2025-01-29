@@ -12,7 +12,7 @@ interface LeftContainerInterface {
 const LeftContainer: React.FC<LeftContainerInterface> = ({ weaponName, setWeaponName, fortress }) => {
 
     return (
-        <div className='flex flex-col h-full w-[50%] border-1'>
+        <div className='flex flex-col h-full w-[50%]'>
             <h1>Citadel of Eternal Night</h1>
             <img src={castle}>
             </img>
