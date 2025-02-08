@@ -1,4 +1,4 @@
-import { MegaEpicFortress, Recurses2Count, RecursesCount, RolesCount, TowerGuardCount, TowerHeightCount, Towers, VillagerProfessionCount, WeaponCount } from "../types/MegaEpicFortress";
+import { LandMarksDistance, MegaEpicFortress, Recurses2Count, RecursesCount, RolesCount, TowerGuardCount, TowerHeightCount, Towers, VillagerProfessionCount, WeaponCount } from "../types/MegaEpicFortress";
 
 export function getTowersAndGuardsByWeaponType(fortress: MegaEpicFortress, weapon: string): { towers: Towers[], guardNames: string[] } {
 
@@ -18,8 +18,6 @@ export function countVillagersByProfession(fortress: MegaEpicFortress): Villager
   villagers?.professions.forEach(profession => {
     villagerCounts[profession.type] = profession.count;
   })
-
-  // console.log(villagerCounts);
 
 
   return villagerCounts;
@@ -49,8 +47,6 @@ export function countTowersByHeight(fortress: MegaEpicFortress): TowerHeightCoun
       heightCount[height] = 1;
     }
   });
-
-  console.log(heightCount);
 
   return heightCount;
 }
@@ -109,9 +105,6 @@ export function countOtherResources(fortress: MegaEpicFortress): Recurses2Count 
 
   recursesCount['grain'] = grain.quantity;
   recursesCount['water'] = water.capacity;
-  
-  console.log(recursesCount);
-  
 
   return recursesCount;
 }
@@ -123,7 +116,6 @@ export function weaponCount(fortress: MegaEpicFortress): WeaponCount {
 
   towers.forEach(tower => {
     const towerWeapon = tower.armament.weaponType;
-    console.log(towerWeapon);
     
     if (weaponCount[towerWeapon]){
       weaponCount[towerWeapon]++;
@@ -133,4 +125,18 @@ export function weaponCount(fortress: MegaEpicFortress): WeaponCount {
   })
 
   return weaponCount;
+}
+
+export function showNearestLandMarks(fortress: MegaEpicFortress): LandMarksDistance {
+  const landMarksDistance: LandMarksDistance = {};
+
+  const landmarks = fortress.location.nearbyLandmarks;
+
+  landmarks.forEach(landMark => {
+    landMarksDistance[landMark.name] = landMark.distance
+  });
+
+  console.log(landMarksDistance);
+
+  return landMarksDistance;
 }
