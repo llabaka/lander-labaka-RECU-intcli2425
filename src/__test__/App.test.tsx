@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { megaEpicFortress } from '../data/data';
-import { countDefendersByTower, countRecurses, countTowersByHeight, countVillagersByProfession, getTowersAndGuardsByWeaponType } from '../helpers/helpers';
+import { countDefendersByTower, countRecurses, countRoles, countTowersByHeight, countVillagersByProfession, getTowersAndGuardsByWeaponType } from '../helpers/helpers';
 
 describe('Recibe la fortaleza, el arma', () => {
   it('devuelve un array de objetos torre con su nombre y devuelve un array de los nombres de los guardianes', () => {
@@ -44,6 +44,16 @@ describe('Recibe la fortaleza. Devuelve las profesionales y la cantidad de profe
     const fortress =  megaEpicFortress;
 
     const filtered = countRecurses(fortress);
+    
+  })
+})
+
+describe('Recibe la fortaleza. Devuelve las profesionales y la cantidad de profesionales de los pueblerinos', () => {
+  it('Devuelve tipo Record <nombre, cantidad>', () => {
+
+    const fortress =  megaEpicFortress;
+
+    const filtered = countRoles(fortress);
     
   })
 })

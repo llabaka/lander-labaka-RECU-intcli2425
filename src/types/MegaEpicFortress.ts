@@ -137,3 +137,4 @@ export type VillagerProfessionCount = Record<string, number>;
 export type TowerGuardCount = Record<string, number>;
 export type TowerHeightCount = Record<number, number>;
 export type RecursesCount = Record<string, number>;
+export type RolesCount = Record<string, number>;
