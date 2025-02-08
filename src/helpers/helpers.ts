@@ -1,4 +1,4 @@
-import { MegaEpicFortress, Towers } from "../types/MegaEpicFortress";
+import { MegaEpicFortress, Towers, VillagerProfessionCount } from "../types/MegaEpicFortress";
 
 export function getTowersAndGuardsByWeaponType(fortress: MegaEpicFortress, weapon: string): { towers: Towers[], guardNames: string[] } {
 
@@ -9,6 +9,18 @@ export function getTowersAndGuardsByWeaponType(fortress: MegaEpicFortress, weapo
   return { towers, guardNames };
 }
 
-export function countVillagersByProfession() {
+export function countVillagersByProfession(fortress: MegaEpicFortress): VillagerProfessionCount {
 
+  const villagers = fortress.inhabitants.roles.find(role => role.role === 'Villager');
+
+  const villagerCounts: VillagerProfessionCount = {};
+
+  villagers?.professions.forEach(profession => {
+    villagerCounts[profession.type] = profession.count;
+  })
+
+  console.log(villagerCounts);
+  
+
+  return villagerCounts;
 }
