@@ -138,3 +138,4 @@ export type TowerGuardCount = Record<string, number>;
 export type TowerHeightCount = Record<number, number>;
 export type RecursesCount = Record<string, number>;
 export type RolesCount = Record<string, number>;
+export type Recurses2Count = Record<string, number>;
