@@ -1,4 +1,4 @@
-import { MegaEpicFortress, TowerGuardCount, TowerHeightCount, Towers, VillagerProfessionCount } from "../types/MegaEpicFortress";
+import { MegaEpicFortress, RecursesCount, TowerGuardCount, TowerHeightCount, Towers, VillagerProfessionCount } from "../types/MegaEpicFortress";
 
 export function getTowersAndGuardsByWeaponType(fortress: MegaEpicFortress, weapon: string): { towers: Towers[], guardNames: string[] } {
 
@@ -53,4 +53,33 @@ export function countTowersByHeight(fortress: MegaEpicFortress): TowerHeightCoun
   console.log(heightCount);
 
   return heightCount;
-} 
+}
+
+export function countRecurses(fortress: MegaEpicFortress): RecursesCount {
+
+  const recursesCount: RecursesCount = {};
+
+  const totalFood = fortress.resources.storage.food.quantity;
+  const totalWater = fortress.resources.storage.water.capacity;
+
+  recursesCount["totalFood"] = totalFood;
+  recursesCount["totalWater"] = totalWater;
+
+  let totalShields = 0;
+  let totalWeapons = 0;
+
+  fortress.resources.armory.shields.forEach(shield => {
+    totalShields += shield.quantity;
+  });
+
+  fortress.resources.armory.weapons.forEach(weapon => {
+    totalWeapons += weapon.quantity;
+  });
+  
+  recursesCount["totalShields"] = totalShields;
+  recursesCount["totalWeapons"] = totalWeapons;
+
+  console.log(recursesCount);
+
+  return recursesCount;
+}

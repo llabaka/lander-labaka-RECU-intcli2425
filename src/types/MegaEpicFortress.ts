@@ -135,4 +135,5 @@ export interface MajorEvents {
 
 export type VillagerProfessionCount = Record<string, number>;
 export type TowerGuardCount = Record<string, number>;
-export type TowerHeightCount = Record<number, number>
+export type TowerHeightCount = Record<number, number>;
+export type RecursesCount = Record<string, number>;
