@@ -1,4 +1,4 @@
-import { MegaEpicFortress, TowerGuardCount, Towers, VillagerProfessionCount } from "../types/MegaEpicFortress";
+import { MegaEpicFortress, TowerGuardCount, TowerHeightCount, Towers, VillagerProfessionCount } from "../types/MegaEpicFortress";
 
 export function getTowersAndGuardsByWeaponType(fortress: MegaEpicFortress, weapon: string): { towers: Towers[], guardNames: string[] } {
 
@@ -19,14 +19,14 @@ export function countVillagersByProfession(fortress: MegaEpicFortress): Villager
     villagerCounts[profession.type] = profession.count;
   })
 
-  console.log(villagerCounts);
-  
+  // console.log(villagerCounts);
+
 
   return villagerCounts;
 }
 
-export function countDefendersByTower(fortress: MegaEpicFortress): TowerGuardCount{
-  
+export function countDefendersByTower(fortress: MegaEpicFortress): TowerGuardCount {
+
   const defenderCounts: VillagerProfessionCount = {};
 
   fortress.defenses.towers.forEach(tower => {
@@ -35,3 +35,22 @@ export function countDefendersByTower(fortress: MegaEpicFortress): TowerGuardCou
 
   return defenderCounts;
 }
+
+export function countTowersByHeight(fortress: MegaEpicFortress): TowerHeightCount {
+
+  const heightCount: TowerHeightCount = {};
+
+  fortress.defenses.towers.forEach(tower => {
+    const height = tower.height;
+
+    if (heightCount[height]) {
+      heightCount[height]++
+    } else {
+      heightCount[height] = 1;
+    }
+  });
+
+  console.log(heightCount);
+
+  return heightCount;
+} 
