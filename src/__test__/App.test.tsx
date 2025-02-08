@@ -1,8 +1,20 @@
 import '@testing-library/jest-dom'
+import { megaEpicFortress } from '../data/data'
+import { getTowersAndGuardsByWeaponType } from '../helpers/helpers';
 
 describe('Recibe la fortaleza, el arma', () => {
   it('devuelve un array de objetos torre con su nombre y devuelve un array de los nombres de los guardianes', () => {
 
+    const fortress =  megaEpicFortress;
+
+    const filtered = getTowersAndGuardsByWeaponType(fortress, 'Ballista');
+    expect(filtered.guardNames).toContain('Lira the Watcher');
+    expect(filtered.guardNames).toContain('Garron the Keen-eyed');
+    expect(filtered.guardNames).toContain('Lazarus');
+    expect(filtered.guardNames).toContain('Pesbe');
+
+    expect(filtered.towers.map(tower => tower.name)).toContain('Tower of Vigilance');
+    expect(filtered.towers.map(tower => tower.name)).toContain('Tower of Ice');
   })
 })
 
