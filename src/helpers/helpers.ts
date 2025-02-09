@@ -101,7 +101,7 @@ export function countOtherResources(fortress: MegaEpicFortress): Recurses2Count 
 
   const grain = fortress.resources.storage.food;
   const water = fortress.resources.storage.water;
-  
+
 
   recursesCount['grain'] = grain.quantity;
   recursesCount['water'] = water.capacity;
@@ -116,8 +116,8 @@ export function weaponCount(fortress: MegaEpicFortress): WeaponCount {
 
   towers.forEach(tower => {
     const towerWeapon = tower.armament.weaponType;
-    
-    if (weaponCount[towerWeapon]){
+
+    if (weaponCount[towerWeapon]) {
       weaponCount[towerWeapon]++;
     } else {
       weaponCount[towerWeapon] = 1;
@@ -139,4 +139,11 @@ export function showNearestLandMarks(fortress: MegaEpicFortress): LandMarksDista
   console.log(landMarksDistance);
 
   return landMarksDistance;
+}
+
+export function obtainTowerByGuards(fortress: MegaEpicFortress, minGuards: number): Towers[] {
+
+  const towers = fortress.defenses.towers;
+
+  return towers.filter(tower => tower.guards.length > minGuards);
 }

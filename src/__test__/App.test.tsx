@@ -1,11 +1,11 @@
 import '@testing-library/jest-dom';
 import { megaEpicFortress } from '../data/data';
-import { countDefendersByTower, countOtherResources, countRecurses, countRoles, countVillagersByProfession, getTowersAndGuardsByWeaponType, showNearestLandMarks, weaponCount } from '../helpers/helpers';
+import { countDefendersByTower, countOtherResources, countRecurses, countRoles, countVillagersByProfession, getTowersAndGuardsByWeaponType, obtainTowerByGuards, showNearestLandMarks, weaponCount } from '../helpers/helpers';
 
 describe('Recibe la fortaleza, el arma', () => {
   it('devuelve un array de objetos torre con su nombre y devuelve un array de los nombres de los guardianes', () => {
 
-    const fortress =  megaEpicFortress;
+    const fortress = megaEpicFortress;
 
     const filtered = getTowersAndGuardsByWeaponType(fortress, 'Ballista');
     expect(filtered.guardNames).toContain('Lira the Watcher');
@@ -21,69 +21,81 @@ describe('Recibe la fortaleza, el arma', () => {
 describe('Recibe la fortaleza. Devuelve las profesionales y la cantidad de profesionales de los pueblerinos', () => {
   it('Devuelve tipo Record <nombre, cantidad>', () => {
 
-    const fortress =  megaEpicFortress;
+    const fortress = megaEpicFortress;
 
     const filtered = countVillagersByProfession(fortress);
-    
+
   })
 })
 
 describe('Recibe la fortaleza. Devuelve las profesionales y la cantidad de profesionales de los pueblerinos', () => {
   it('Devuelve tipo Record <nombre, cantidad>', () => {
 
-    const fortress =  megaEpicFortress;
+    const fortress = megaEpicFortress;
 
     const filtered = countDefendersByTower(fortress);
-    
+
   })
 })
 
 describe('Recibe la fortaleza. Devuelve las profesionales y la cantidad de profesionales de los pueblerinos', () => {
   it('Devuelve tipo Record <nombre, cantidad>', () => {
 
-    const fortress =  megaEpicFortress;
+    const fortress = megaEpicFortress;
 
     const filtered = countRecurses(fortress);
-    
+
   })
 })
 
 describe('Recibe la fortaleza. Devuelve las profesionales y la cantidad de profesionales de los pueblerinos', () => {
   it('Devuelve tipo Record <nombre, cantidad>', () => {
 
-    const fortress =  megaEpicFortress;
+    const fortress = megaEpicFortress;
 
     const filtered = countRoles(fortress);
-    
+
   })
 })
 
 describe('Recibe la fortaleza. Devuelve las profesionales y la cantidad de profesionales de los pueblerinos', () => {
   it('Devuelve tipo Record <nombre, cantidad>', () => {
 
-    const fortress =  megaEpicFortress;
+    const fortress = megaEpicFortress;
 
     const filtered = countOtherResources(fortress);
-    
+
   })
 })
 
 describe('Recibe la fortaleza. Devuelve las profesionales y la cantidad de profesionales de los pueblerinos', () => {
   it('Devuelve tipo Record <nombre, cantidad>', () => {
 
-    const fortress =  megaEpicFortress;
+    const fortress = megaEpicFortress;
 
     const filtered = weaponCount(fortress);
-    
+
   })
 })
 
 describe('Recibe la fortaleza. Devuelve las profesionales y la cantidad de profesionales de los pueblerinos', () => {
   it('Devuelve tipo Record <nombre, cantidad>', () => {
 
-    const fortress =  megaEpicFortress;
+    const fortress = megaEpicFortress;
 
     const filtered = showNearestLandMarks(fortress);
+
+  })
+})
+
+describe('Recibe la fortaleza. Devuelve las profesionales y la cantidad de profesionales de los pueblerinos', () => {
+  it('Devuelve tipo Record <nombre, cantidad>', () => {
+
+    const fortress = megaEpicFortress;
+
+    const filtered = obtainTowerByGuards(fortress, 3);
+
+    console.log(filtered);
     
   })
 })
