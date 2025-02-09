@@ -157,6 +157,15 @@ export function findTowerWithMostGuards(fortress: MegaEpicFortress): Towers {
       mostGuardsTower = tower;
     }
   });
-  
+
   return mostGuardsTower;
+}
+
+export function obtainProfessionWithMostInhabitants(fortress: MegaEpicFortress): string[] {
+
+  const professions = fortress.inhabitants.roles.flatMap(role => role.professions);
+
+  const sortedProfessions = professions.sort((a,b) => b.count - a.count).map(sorted => sorted.type);
+  
+  return sortedProfessions;
 }
