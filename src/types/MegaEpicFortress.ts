@@ -141,3 +141,4 @@ export type RolesCount = Record<string, number>;
 export type Recurses2Count = Record<string, number>;
 export type WeaponCount = Record<string, number>;
 export type LandMarksDistance = Record<string, number>;
+export type TotalGuardsByWeapon = Record<string, number>;

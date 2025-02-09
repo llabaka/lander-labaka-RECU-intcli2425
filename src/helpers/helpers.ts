@@ -1,4 +1,4 @@
-import { LandMarksDistance, MegaEpicFortress, Recurses2Count, RecursesCount, RolesCount, TowerGuardCount, TowerHeightCount, Towers, VillagerProfessionCount, WeaponCount } from "../types/MegaEpicFortress";
+import { LandMarksDistance, MegaEpicFortress, Recurses2Count, RecursesCount, RolesCount, TotalGuardsByWeapon, TowerGuardCount, TowerHeightCount, Towers, VillagerProfessionCount, WeaponCount } from "../types/MegaEpicFortress";
 
 export function getTowersAndGuardsByWeaponType(fortress: MegaEpicFortress, weapon: string): { towers: Towers[], guardNames: string[] } {
 
@@ -184,3 +184,23 @@ export function obtainTowerByMostArmament(fortress: MegaEpicFortress): Towers {
 
   return mostArmamentTower;
 }
+
+export function calculateTotalGuardsByWeapon(fortress: MegaEpicFortress): TotalGuardsByWeapon {
+  const totalGuardsByWeapon: TotalGuardsByWeapon = {};
+
+
+  fortress.defenses.towers.forEach(tower => {
+    tower.guards.forEach(() => {
+      const weapon = tower.armament.weaponType;
+
+      if (totalGuardsByWeapon[weapon]) {
+        totalGuardsByWeapon[weapon]++;
+      } else {
+        totalGuardsByWeapon[weapon] = 1;
+      }
+    })
+
+  })
+  return totalGuardsByWeapon;
+}
+
