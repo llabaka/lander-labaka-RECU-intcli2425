@@ -1,5 +1,6 @@
 import { LandMarksDistance, MegaEpicFortress, Recurses2Count, RecursesCount, RolesCount, TotalGuardsByWeapon, TowerGuardCount, TowerHeightCount, Towers, VillagerProfessionCount, WeaponCount } from "../types/MegaEpicFortress";
 
+// Obtiene las torres que usan un tipo de arma específico y los nombres de los guardianes en esas torres.
 export function getTowersAndGuardsByWeaponType(fortress: MegaEpicFortress, weapon: string): { towers: Towers[], guardNames: string[] } {
 
   const towers = fortress.defenses.towers.filter(tower => tower.armament.weaponType === weapon);
@@ -9,6 +10,7 @@ export function getTowersAndGuardsByWeaponType(fortress: MegaEpicFortress, weapo
   return { towers, guardNames };
 }
 
+// Cuenta la cantidad de aldeanos por tipo de profesión en la fortaleza.
 export function countVillagersByProfession(fortress: MegaEpicFortress): VillagerProfessionCount {
 
   const villagers = fortress.inhabitants.roles.find(role => role.role === 'Villager');
@@ -19,10 +21,10 @@ export function countVillagersByProfession(fortress: MegaEpicFortress): Villager
     villagerCounts[profession.type] = profession.count;
   })
 
-
   return villagerCounts;
 }
 
+// Cuenta la cantidad de guardianes por torre en la fortaleza.
 export function countDefendersByTower(fortress: MegaEpicFortress): TowerGuardCount {
 
   const defenderCounts: VillagerProfessionCount = {};
@@ -34,6 +36,7 @@ export function countDefendersByTower(fortress: MegaEpicFortress): TowerGuardCou
   return defenderCounts;
 }
 
+// Cuenta la cantidad de torres agrupadas por su altura.
 export function countTowersByHeight(fortress: MegaEpicFortress): TowerHeightCount {
 
   const heightCount: TowerHeightCount = {};
@@ -42,7 +45,7 @@ export function countTowersByHeight(fortress: MegaEpicFortress): TowerHeightCoun
     const height = tower.height;
 
     if (heightCount[height]) {
-      heightCount[height]++
+      heightCount[height]++;
     } else {
       heightCount[height] = 1;
     }
@@ -51,6 +54,7 @@ export function countTowersByHeight(fortress: MegaEpicFortress): TowerHeightCoun
   return heightCount;
 }
 
+// Cuenta la cantidad total de recursos (comida, agua, escudos y armas) en la fortaleza.
 export function countRecurses(fortress: MegaEpicFortress): RecursesCount {
 
   const recursesCount: RecursesCount = {};
@@ -78,6 +82,7 @@ export function countRecurses(fortress: MegaEpicFortress): RecursesCount {
   return recursesCount;
 }
 
+// Cuenta la cantidad de guardianes por su rol (rango) en toda la fortaleza.
 export function countRoles(fortress: MegaEpicFortress): RolesCount {
   const rolesCount: RolesCount = {};
 
@@ -96,12 +101,12 @@ export function countRoles(fortress: MegaEpicFortress): RolesCount {
   return rolesCount;
 }
 
+// Cuenta los recursos básicos (grano y agua) en la fortaleza.
 export function countOtherResources(fortress: MegaEpicFortress): Recurses2Count {
   const recursesCount: Recurses2Count = {};
 
   const grain = fortress.resources.storage.food;
   const water = fortress.resources.storage.water;
-
 
   recursesCount['grain'] = grain.quantity;
   recursesCount['water'] = water.capacity;
@@ -109,6 +114,7 @@ export function countOtherResources(fortress: MegaEpicFortress): Recurses2Count 
   return recursesCount;
 }
 
+// Cuenta la cantidad de armas por tipo en las torres de la fortaleza.
 export function weaponCount(fortress: MegaEpicFortress): WeaponCount {
   const weaponCount: Recurses2Count = {};
 
@@ -127,6 +133,7 @@ export function weaponCount(fortress: MegaEpicFortress): WeaponCount {
   return weaponCount;
 }
 
+// Muestra las distancias de los puntos de referencia cercanos a la fortaleza.
 export function showNearestLandMarks(fortress: MegaEpicFortress): LandMarksDistance {
   const landMarksDistance: LandMarksDistance = {};
 
@@ -141,6 +148,7 @@ export function showNearestLandMarks(fortress: MegaEpicFortress): LandMarksDista
   return landMarksDistance;
 }
 
+// Obtiene las torres que tienen más de un número mínimo de guardianes.
 export function obtainTowerByGuards(fortress: MegaEpicFortress, minGuards: number): Towers[] {
 
   const towers = fortress.defenses.towers;
@@ -148,6 +156,7 @@ export function obtainTowerByGuards(fortress: MegaEpicFortress, minGuards: numbe
   return towers.filter(tower => tower.guards.length > minGuards);
 }
 
+// Encuentra la torre con la mayor cantidad de guardianes.
 export function findTowerWithMostGuards(fortress: MegaEpicFortress): Towers {
 
   let mostGuardsTower = fortress.defenses.towers[0];
@@ -161,6 +170,7 @@ export function findTowerWithMostGuards(fortress: MegaEpicFortress): Towers {
   return mostGuardsTower;
 }
 
+// Obtiene las profesiones más comunes en la fortaleza, ordenadas por la cantidad de habitantes.
 export function obtainProfessionWithMostInhabitants(fortress: MegaEpicFortress): string[] {
 
   const professions = fortress.inhabitants.roles.flatMap(role => role.professions);
@@ -170,6 +180,7 @@ export function obtainProfessionWithMostInhabitants(fortress: MegaEpicFortress):
   return sortedProfessions;
 }
 
+// Obtiene la torre con la mayor cantidad de armamento (munición).
 export function obtainTowerByMostArmament(fortress: MegaEpicFortress): Towers {
 
   const towers = fortress.defenses.towers;
@@ -185,9 +196,9 @@ export function obtainTowerByMostArmament(fortress: MegaEpicFortress): Towers {
   return mostArmamentTower;
 }
 
+// Calcula el total de guardianes por tipo de arma en todas las torres de la fortaleza.
 export function calculateTotalGuardsByWeapon(fortress: MegaEpicFortress): TotalGuardsByWeapon {
   const totalGuardsByWeapon: TotalGuardsByWeapon = {};
-
 
   fortress.defenses.towers.forEach(tower => {
     tower.guards.forEach(() => {
@@ -199,8 +210,7 @@ export function calculateTotalGuardsByWeapon(fortress: MegaEpicFortress): TotalG
         totalGuardsByWeapon[weapon] = 1;
       }
     })
-
   })
+
   return totalGuardsByWeapon;
 }
-
