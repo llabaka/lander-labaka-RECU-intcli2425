@@ -165,7 +165,22 @@ export function obtainProfessionWithMostInhabitants(fortress: MegaEpicFortress):
 
   const professions = fortress.inhabitants.roles.flatMap(role => role.professions);
 
-  const sortedProfessions = professions.sort((a,b) => b.count - a.count).map(sorted => sorted.type);
-  
+  const sortedProfessions = professions.sort((a, b) => b.count - a.count).map(sorted => sorted.type);
+
   return sortedProfessions;
+}
+
+export function obtainTowerByMostArmament(fortress: MegaEpicFortress): Towers {
+
+  const towers = fortress.defenses.towers;
+
+  let mostArmamentTower = towers[0];
+
+  towers.forEach(tower => {
+    if (tower.armament.ammunitionCount > mostArmamentTower.armament.ammunitionCount) {
+      mostArmamentTower = tower;
+    }
+  });
+
+  return mostArmamentTower;
 }
