@@ -120,6 +120,10 @@ export const megaEpicFortress: MegaEpicFortress = {
             rank: "Soldier"
 
           },
+          {
+            name: "Molio the Cat",
+            rank: "Soldier"
+          },
         ],
       },
       {

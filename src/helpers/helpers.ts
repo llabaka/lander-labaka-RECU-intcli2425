@@ -147,3 +147,16 @@ export function obtainTowerByGuards(fortress: MegaEpicFortress, minGuards: numbe
 
   return towers.filter(tower => tower.guards.length > minGuards);
 }
+
+export function findTowerWithMostGuards(fortress: MegaEpicFortress): Towers {
+
+  let mostGuardsTower = fortress.defenses.towers[0];
+
+  fortress.defenses.towers.forEach(tower => {
+    if (tower.guards.length > mostGuardsTower.guards.length) {
+      mostGuardsTower = tower;
+    }
+  });
+  
+  return mostGuardsTower;
+}
