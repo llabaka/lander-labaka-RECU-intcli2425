@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { megaEpicFortress } from '../data/data';
-import { calculateTotalGuardsByWeapon, countDefendersByTower, countOtherResources, countRecurses, countRoles, countTowersByHeight, countVillagersByProfession, findTowerWithMostGuards, getGuardsByRank, getTowersAndGuardsByWeaponType, guardsOfSameName, obtainAllWeapons, obtainProfessionWithMostInhabitants, obtainTowerByGuards, obtainTowerByMinAmmo, obtainTowerByMinHeight, obtainTowerByMostArmament, showNearestLandMarks, totalGuards, totalMunitionByWeapon, weaponCount } from '../helpers/helpers';
+import { calculateTotalGuardsByWeapon, countDefendersByTower, countOtherResources, countRecurses, countRoles, countTowersByHeight, countVillagersByProfession, filterEventsByOutcome, findTowerWithMostGuards, getGuardsByRank, getTowersAndGuardsByWeaponType, guardsOfSameName, obtainAllWeapons, obtainProfessionWithMostInhabitants, obtainTowerByGuards, obtainTowerByMinAmmo, obtainTowerByMinHeight, obtainTowerByMostArmament, showNearestLandMarks, totalGuards, totalMunitionByWeapon, weaponCount } from '../helpers/helpers';
 
 describe('Recibe la fortaleza, el arma', () => {
   it('devuelve un array de objetos torre con su nombre y devuelve un array de los nombres de los guardianes', () => {
@@ -241,6 +241,18 @@ describe('Recibe la fortaleza. Devuelve las profesionales y la cantidad de profe
     const fortress = megaEpicFortress;
 
     const filtered = guardsOfSameName(fortress);
+    
+    console.log(filtered);
+    
+  })
+})
+
+describe('Recibe la fortaleza. Devuelve las profesionales y la cantidad de profesionales de los pueblerinos', () => {
+  it('Devuelve tipo Record <nombre, cantidad>', () => {
+
+    const fortress = megaEpicFortress;
+
+    const filtered = filterEventsByOutcome(fortress, 'Partial Destruction');
     
     console.log(filtered);
     

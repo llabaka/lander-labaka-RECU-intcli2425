@@ -240,7 +240,7 @@ export function obtainAllWeapons(fortress: MegaEpicFortress): string[] {
   const weapons = fortress.resources.armory.weapons.map(weapon => weapon.type);
 
   const allWeapons = shields.concat(weapons);
-  
+
   return allWeapons;
 }
 
@@ -251,7 +251,7 @@ export function totalMunitionByWeapon(fortress: MegaEpicFortress, weaponType: st
   const towers = fortress.defenses.towers;
 
   towers.forEach(tower => {
-    if(tower.armament.weaponType === weaponType) {
+    if (tower.armament.weaponType === weaponType) {
       munition++;
     }
   });
@@ -259,12 +259,12 @@ export function totalMunitionByWeapon(fortress: MegaEpicFortress, weaponType: st
   return munition;
 }
 
-export function obtainTowerByMinAmmo(fortress: MegaEpicFortress, minAmmo: number): {towers: Towers[], towerNames: string[]} {
+export function obtainTowerByMinAmmo(fortress: MegaEpicFortress, minAmmo: number): { towers: Towers[], towerNames: string[] } {
 
   const towers = fortress.defenses.towers.filter(tower => tower.armament.ammunitionCount > minAmmo);
   const towerNames = towers.map(tower => tower.name);
 
-  return {towers, towerNames}
+  return { towers, towerNames }
 }
 
 export function guardsOfSameName(fortress: MegaEpicFortress): GuardsOfSameName {
@@ -274,14 +274,27 @@ export function guardsOfSameName(fortress: MegaEpicFortress): GuardsOfSameName {
 
   towers.forEach(tower => {
     tower.guards.forEach(guard => {
-      if (guardsNames[guard.name] !== undefined){
+      if (guardsNames[guard.name] !== undefined) {
         guardsNames[guard.name] = true;
       } else {
         guardsNames[guard.name] = false;
       }
     });
   });
-  
+
 
   return guardsNames;
+}
+
+export function filterEventsByOutcome(fortress: MegaEpicFortress, outCome: string): { year: number, event: string, outCome2: string }[] {
+
+  const events = fortress.history.majorEvents.filter(majorEvent => majorEvent.outcome === outCome);
+
+  const result = events.map(event => ({
+    year: event.year,
+    event: event.event,
+    outCome2: event.outcome
+  }));
+  
+  return result;
 }
