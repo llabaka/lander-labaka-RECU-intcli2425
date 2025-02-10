@@ -221,3 +221,9 @@ export function getGuardsByRank(fortress: MegaEpicFortress, rank: string): strin
 
   return filteredGuards;
 }
+
+export function totalGuards(fortress: MegaEpicFortress): number {
+
+  const totalGuards = fortress.defenses.towers.flatMap(tower => tower.guards).length;
+  return totalGuards
+}
