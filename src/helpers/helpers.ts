@@ -233,3 +233,13 @@ export function obtainTowerByMinHeight(fortress: MegaEpicFortress, minHeight: nu
   const towers = fortress.defenses.towers.filter(tower => tower.height > minHeight);
   return towers;
 }
+
+export function obtainAllWeapons(fortress: MegaEpicFortress): string[] {
+
+  const shields = fortress.resources.armory.shields.map(shield => shield.type);
+  const weapons = fortress.resources.armory.weapons.map(weapon => weapon.type);
+
+  const allWeapons = shields.concat(weapons);
+  
+  return allWeapons;
+}
