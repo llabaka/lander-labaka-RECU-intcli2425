@@ -258,3 +258,11 @@ export function totalMunitionByWeapon(fortress: MegaEpicFortress, weaponType: st
 
   return munition;
 }
+
+export function obtainTowerByMinAmmo(fortress: MegaEpicFortress, minAmmo: number): {towers: Towers[], towerNames: string[]} {
+
+  const towers = fortress.defenses.towers.filter(tower => tower.armament.ammunitionCount > minAmmo);
+  const towerNames = towers.map(tower => tower.name);
+
+  return {towers, towerNames}
+}
