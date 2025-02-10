@@ -243,3 +243,18 @@ export function obtainAllWeapons(fortress: MegaEpicFortress): string[] {
   
   return allWeapons;
 }
+
+export function totalMunitionByWeapon(fortress: MegaEpicFortress, weaponType: string): number {
+
+  let munition = 0;
+
+  const towers = fortress.defenses.towers;
+
+  towers.forEach(tower => {
+    if(tower.armament.weaponType === weaponType) {
+      munition++;
+    }
+  });
+
+  return munition;
+}
