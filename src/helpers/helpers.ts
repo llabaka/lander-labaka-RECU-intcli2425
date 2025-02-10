@@ -214,3 +214,10 @@ export function calculateTotalGuardsByWeapon(fortress: MegaEpicFortress): TotalG
 
   return totalGuardsByWeapon;
 }
+
+export function getGuardsByRank(fortress: MegaEpicFortress, rank: string): string[] {
+  const guards = fortress.defenses.towers.flatMap(tower => tower.guards);
+  const filteredGuards = guards.filter(guard => guard.rank === rank).map(filteredGuard => filteredGuard.name);
+
+  return filteredGuards;
+}
