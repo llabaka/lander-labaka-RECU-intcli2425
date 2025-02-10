@@ -166,6 +166,11 @@ export const megaEpicFortress: MegaEpicFortress = {
             rank: "Soldier"
 
           },
+          {
+            name: "Pazos el Traidor",
+            rank: "Pariah"
+
+          },
         ],
       },
       {
@@ -181,6 +186,10 @@ export const megaEpicFortress: MegaEpicFortress = {
             name: "Pazos el Traidor",
             rank: "Pariah"
 
+          },
+          {
+            name: "Strombo",
+            rank: "Soldier"
           },
           {
             name: "Labaka el Tramposo",

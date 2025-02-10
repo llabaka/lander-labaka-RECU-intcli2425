@@ -1,4 +1,4 @@
-import { LandMarksDistance, MegaEpicFortress, Recurses2Count, RecursesCount, RolesCount, TotalGuardsByWeapon, TowerGuardCount, TowerHeightCount, Towers, VillagerProfessionCount, WeaponCount } from "../types/MegaEpicFortress";
+import { GuardsOfSameName, LandMarksDistance, MegaEpicFortress, Recurses2Count, RecursesCount, RolesCount, TotalGuardsByWeapon, TowerGuardCount, TowerHeightCount, Towers, VillagerProfessionCount, WeaponCount } from "../types/MegaEpicFortress";
 
 // Obtiene las torres que usan un tipo de arma específico y los nombres de los guardianes en esas torres.
 export function getTowersAndGuardsByWeaponType(fortress: MegaEpicFortress, weapon: string): { towers: Towers[], guardNames: string[] } {
@@ -265,4 +265,23 @@ export function obtainTowerByMinAmmo(fortress: MegaEpicFortress, minAmmo: number
   const towerNames = towers.map(tower => tower.name);
 
   return {towers, towerNames}
+}
+
+export function guardsOfSameName(fortress: MegaEpicFortress): GuardsOfSameName {
+  const guardsNames: GuardsOfSameName = {};
+
+  const towers = fortress.defenses.towers;
+
+  towers.forEach(tower => {
+    tower.guards.forEach(guard => {
+      if (guardsNames[guard.name] !== undefined){
+        guardsNames[guard.name] = true;
+      } else {
+        guardsNames[guard.name] = false;
+      }
+    });
+  });
+  
+
+  return guardsNames;
 }
